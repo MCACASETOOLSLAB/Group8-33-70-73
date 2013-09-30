@@ -9,10 +9,8 @@
 #include<string.h>
 
 
-
-
        //*************************************************//
-       // -*- Class For Attractive look -*- //
+       //     -*-   Class For Attractive look    -*-      //
        //*************************************************//
 
 
@@ -24,10 +22,12 @@ class Display
  int i,j,k,l,a;
  public:
  void border();
+ void name();
  void draw_car(int,int=240);
  void erase_car(int,int=240);
  void draw_track(int);
  void erase_track(int);
+ //void obstacle();
 };
 
 /*------------- -*- Function to Display Boreder -*- --------------*/
@@ -55,6 +55,9 @@ void Display::border()
       outtextxy(105,i,"$");outtextxy(525,i,"$");
     }
 }
+void Display::name()
+{
+}
 
 /*------------- -*- Function to Draw Track -*- --------------------*/
 void Display::draw_track(int p)
@@ -62,22 +65,22 @@ void Display::draw_track(int p)
  i=0;j=70; k=-100; //car (160);car (260,50);
      l=0;
     setcolor(WHITE);
-    for(j=p;j<500;j+=100) // 5 - vert
-    { l=0;
-for(i=119;i<=519;i+=100) // 4 - horz
-{
-if(l==0)
-{
-setcolor(YELLOW);
-l=1;
-}
-else
-{ setcolor(WHITE);
-l=0;
-}
+    for(j=p;j<500;j+=100)                 //  5 - vert
+    {            l=0;
+	 for(i=119;i<=519;i+=100)      //  4 - horz
+	{
+	    if(l==0)
+	    {
+		setcolor(YELLOW);
+		l=1;
+	    }
+	     else
+	    {    setcolor(WHITE);
+		l=0;
+	    }
 
-line(i,j,i,j+70);
-}
+	    line(i,j,i,j+70);
+	}
 
     }
     setfillstyle(SOLID_FILL,LIGHTGREEN);
@@ -131,13 +134,13 @@ void Display::erase_track(int p)
 
     delay(1);
     setcolor(BLACK);
-    for(j=p;j<500;j+=100) // 5 - vert
+    for(j=p;j<500;j+=100)                 //  5 - vert
        {
-for(i=119;i<=519;i+=100) // 4 - horz
-{
-line(i,j,i,j+70);
+	for(i=119;i<=519;i+=100)      //  4 - horz
+	   {
+	    line(i,j,i,j+70);
 
-}
+	   }
 
        }
 }
@@ -165,10 +168,10 @@ void Display::draw_car(int m,int n)
       setfillstyle(2,3);
     fillpoly(4,poly);
     //Tyres
-    rectangle(m-10,n+15,m-5,n+25); //LT
-    rectangle(m+15,n+15,m+20,n+25); //RT
-    rectangle(m-15,n+75,m-10,n+85); //LB
-    rectangle(m+20,n+75,m+25,n+85); //RB
+    rectangle(m-10,n+15,m-5,n+25);    //LT
+    rectangle(m+15,n+15,m+20,n+25);   //RT
+    rectangle(m-15,n+75,m-10,n+85);   //LB
+    rectangle(m+20,n+75,m+25,n+85);   //RB
 
 }
 
@@ -207,7 +210,7 @@ void Display::erase_car(int m,int n)
 }
   */
        //*************************************************//
-       // -*- Class To Puttext on Screen -*- //
+       //     -*-   Class  To Puttext on Screen   -*-     //
        //*************************************************//
 
 
@@ -254,49 +257,39 @@ void Text::show_info(char st1[],char st2[],char st3[],char st4[])
 void del()
 {
      gotoxy(37,2);
-cout<<"\t\t";
-gotoxy(29,3);
-cout<<"\t\t\t ";
-gotoxy(29,4);
-cout<<"\t\t\t ";
-gotoxy(29,5);
-cout<<"\t\t\t ";
-gotoxy(29,6);
-cout<<"\t\t\t";
-gotoxy(30,7);
-cout<<"\t\t\t";
-setcolor(WHITE);
-//line(240,90,402,90);
-//line(240,97,402,97);
-
+	  cout<<"\t\t";
+	  gotoxy(29,3);
+	  cout<<"\t\t\t   ";
+	  gotoxy(29,4);
+	  cout<<"\t\t\t   ";
+	  gotoxy(29,5);
+	  cout<<"\t\t\t   ";
+	  setcolor(WHITE);
+	  line(240,90,402,90);
+	  line(240,97,402,97);
 }
 void info(int i)
 {
-gotoxy(37,2);
-cout<<"Process P"<<i;
-gotoxy(29,3);
-cout<<"looping continuously in ";
-gotoxy(29,4);
-cout<<"the entry code to enter";
-gotoxy(29,5);
-cout<<"in its critical section";
-gotoxy(40,6);
-if(i==1)
-cout<<"<===";
-else
-cout<<"===>";
-setcolor(RED);
-outtextxy(240,90,"BUSY WAITING");
+	gotoxy(37,2);
+	  cout<<"Process P"<<i;
+	  gotoxy(29,3);
+	  cout<<"looping continuously in ";
+	  gotoxy(29,4);
+	  cout<<"the entry code to enter";
+	  gotoxy(29,5);
+	  cout<<"in its critical section";
+	  setcolor(RED);
+	  outtextxy(240,80,"BUSY WAITING");
 }
 
        //*************************************************//
-       // -*- Main Function -*- //
+       //     -*-        Main     Function     -*-        //
        //*************************************************//
 
 void main()
 {
    int gd=DETECT,gm;
-   initgraph(&gd,&gm,"C:\\TC3\\BGI");
+   initgraph(&gd,&gm,"C:\\TurboC3\\BGI");
    Display x;
    Text tt;
    int k,i,j=0;
@@ -320,7 +313,7 @@ void main()
    x.draw_car(160,40);
    x.draw_car(460,40);
    tt.puttext();
-   tt.show_info("Entry ","Entry ","------","------");
+   tt.show_info("Entry   ","Entry   ","------","------");
    delay(1000);
    setcolor(CYAN);
    setfillstyle(SOLID_FILL,MAGENTA);
@@ -328,82 +321,82 @@ void main()
    rectangle(274,380,356,403);
    gotoxy(36,25);
    cout<<"mutex = 1";
-   tt.show_info("Entry ","Entry ","Wait ","Wait ");
+   tt.show_info("Entry   ","Entry   ","Wait  ","Wait  ");
    delay(1500);
    do
     {
-// delay(1000);
-if(k>n/2)
-{
-gotoxy(2,17);
-cout<<"Semphore";
-gotoxy(2,18);
-cout<<"with";
-gotoxy(2,19);
-cout<<"Busy Waiting";
-gotoxy(2,20);
-cout<<"is called";
-setcolor(YELLOW);
-outtextxy(1,320,"SPINLOCK");
-}
-if(k%2!=0)
-{ x.erase_car(460,300);
-x.draw_car(260);
-gotoxy(36,25);
-cout<<"mutex = 0";
-i=0;
-info(2);
-//delay(500);
-while(i<40)
-{
-x.erase_track(j);
-j+=10;
-if(j>40)j=0;
-x.draw_track(j);
-i++;
-x.draw_car(260);
-x.draw_car(460,40);
-tt.show_info("Critical","Entry ","------","Wait ");
-delay(100);
-}
-x.erase_car(260);
-x.draw_car(160,350);
-tt.show_info("Exit ","Entry ","Signal","Wait ");
-del();
-gotoxy(36,25);
-cout<<"mutex = 1";
-delay(2000);
+	//    delay(1000);
+	    if(k>n/2)
+	    {
+		gotoxy(2,17);
+		cout<<"Semphore";
+		gotoxy(2,18);
+		cout<<"with";
+		gotoxy(2,19);
+		cout<<"Busy Waiting";
+		gotoxy(2,20);
+		cout<<"is called";
+		setcolor(YELLOW);
+		outtextxy(1,320,"SPINLOCK");
+	    }
+	    if(k%2!=0)
+	    {     x.erase_car(460,300);
+		  x.draw_car(260);
+		  gotoxy(36,25);
+		  cout<<"mutex = 0";
+		  i=0;
+		  info(2);
+		  //delay(500);
+		  while(i<40)
+		  {
+		    x.erase_track(j);
+		    j+=10;
+		    if(j>40)j=0;
+		    x.draw_track(j);
+		    i++;
+		    x.draw_car(260);
+		    x.draw_car(460,40);
+		    tt.show_info("Critical","Entry   ","------","Wait  ");
+		    delay(100);
+		  }
+		  x.erase_car(260);
+		  x.draw_car(160,350);
+		  tt.show_info("Exit    ","Entry   ","Signal","Wait  ");
+		  del();
+		  gotoxy(36,25);
+		  cout<<"mutex = 1";
+		  delay(2000);
 
-}
-else
-{
-x.erase_car(160,300);
-x.draw_car(360);
-i=0;
-info(1);
-gotoxy(36,25);
-cout<<"mutex = 0";
-while(i<40)
-{
+	    }
+	    else
+	    {
+		   x.erase_car(160,300);
+		   x.draw_car(360);
+		   i=0;
+		   info(1);
+		   gotoxy(36,25);
+		   cout<<"mutex = 0";
+		   while(i<40)
+		   {
 
-x.erase_track(j);
-j+=10;
-if(j>40)j=0;
-x.draw_track(j);
-x.draw_car(360);
-x.draw_car(160,40);
-tt.show_info("Entry ","Critical","Wait ","------");
-i++;
-delay(100);
-}
-x.erase_car(360);
-x.draw_car(460,350);
-del();
-gotoxy(36,25);
-cout<<"mutex = 1";
-tt.show_info("Entry ","Exit ","Wait ","Signal");
-delay(2000);
-}
-k++;
-}while(k<=target/40);
+		    x.erase_track(j);
+		    j+=10;
+		    if(j>40)j=0;
+		    x.draw_track(j);
+		    x.draw_car(360);
+		    x.draw_car(160,40);
+		    tt.show_info("Entry   ","Critical","Wait  ","------");
+		    i++;
+		    delay(100);
+		   }
+		   x.erase_car(360);
+		  x.draw_car(460,350);
+		  del();
+		  gotoxy(36,25);
+		  cout<<"mutex = 1";
+		  tt.show_info("Entry   ","Exit     ","Wait  ","Signal");
+		  delay(2000);
+	    }
+	    k++;
+	}while(k<=target/40);
 }
