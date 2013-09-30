@@ -175,8 +175,7 @@ gotoxy(36,25);
 cout<<"mutex = 1";
 tt.show_info("Entry ","Exit ","Wait ","Signal");
 delay(2000);
-}
-k++;
+}k++;
 }while(k<=target/40);
 
 }
