@@ -1,4 +1,3 @@
-
 #include <iostream.h>
 #include <graphics.h>
 #include <process.h>
@@ -156,6 +155,5 @@ void main()
    x.erase_track(j);
 
    getch();
-
   }
 
